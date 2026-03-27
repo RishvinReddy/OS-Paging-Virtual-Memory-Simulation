@@ -1,544 +1,715 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=200&section=header&text=OS%20Paging%20%26%20Virtual%20Memory%20Simulator&fontSize=34&fontColor=ffffff&fontAlignY=38&desc=FIFO%20%C2%B7%20LRU%20%C2%B7%20Address%20Translation%20%C2%B7%20CLI%20%26%20GUI&descAlignY=58&descColor=a0a0ff&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f0c29,50:302b63,100:24243e&height=220&section=header&text=OS%20Paging%20%26%20Virtual%20Memory%20Simulator&fontSize=30&fontColor=ffffff&fontAlignY=36&desc=FIFO%20%E2%80%A2%20LRU%20%E2%80%A2%20Address%20Translation%20%E2%80%A2%20CLI%20%26%20GUI&descAlignY=55&descColor=b0b0ff&animation=fadeIn" width="100%" alt="header"/>
 
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=18&pause=1000&color=7C8CF8&center=true&vCenter=true&width=600&lines=Simulating+Virtual+Memory+Management...;FIFO+%E2%86%92+First+In%2C+First+Out+Replacement;LRU+%E2%86%92+Least+Recently+Used+Replacement;Logical+%E2%86%92+Physical+Address+Translation" alt="Typing SVG" />
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1200&color=7C8CF8&center=true&vCenter=true&width=620&lines=Simulating+Virtual+Memory+Management+in+Python...;FIFO+%E2%86%92+Evicts+the+Oldest+Page+in+Memory;LRU+%E2%86%92+Evicts+the+Least+Recently+Used+Page;Logical+Address+%E2%86%92+Physical+Address+Translation" alt="Typing SVG"/>
 
 <br/><br/>
 
-![Python](https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Tkinter](https://img.shields.io/badge/GUI-Tkinter-FF6B6B?style=for-the-badge&logo=python&logoColor=white)
-![Matplotlib](https://img.shields.io/badge/Graphs-Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Complete-00C853?style=for-the-badge&logo=checkmarx&logoColor=white)
-
-![Type](https://img.shields.io/badge/Type-PBL%20Project-FF9800?style=for-the-badge)
-![Course](https://img.shields.io/badge/Course-Operating%20Systems-8A2BE2?style=for-the-badge)
-![University](https://img.shields.io/badge/University-Woxsen-0D47A1?style=for-the-badge)
-
-</div>
-
----
-
-## 📑 Table of Contents
-
-<div align="center">
-
-| Section | Description |
-|:---|:---|
-| [🧠 Overview](#-overview) | What this project does and why |
-| [⚙️ How Virtual Memory Works](#%EF%B8%8F-how-virtual-memory-works) | Full memory management flow |
-| [🔷 FIFO Algorithm](#-fifo--first-in-first-out) | First-In First-Out walkthrough |
-| [🔶 LRU Algorithm](#-lru--least-recently-used) | Least Recently Used walkthrough |
-| [📊 Algorithm Comparison](#-algorithm-comparison) | FIFO vs LRU head-to-head |
-| [🔄 Address Translation](#-address-translation) | Logical → Physical with examples |
-| [✨ Features](#-features) | All capabilities at a glance |
-| [📁 Project Structure](#-project-structure) | File tree and descriptions |
-| [🛠️ Installation](#%EF%B8%8F-requirements--installation) | Setup guide |
-| [🚀 Usage](#-usage--modes) | CLI and GUI walkthrough |
-| [📋 Sample Run](#-full-sample-walkthrough) | End-to-end example |
-| [📚 Glossary](#-concepts-quick-reference) | OS terms explained |
-
-</div>
-
----
-
-## 🧠 Overview
-
-<div align="center">
-
-> **A full-featured Python simulation of Virtual Memory Management in Operating Systems.**  
-> Demonstrates FIFO & LRU page replacement step-by-step, generates performance graphs, and simulates logical-to-physical address translation — through both **CLI** and **GUI** modes.
-
-</div>
+<a href="https://www.python.org"><img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python"/></a>
+<a href="#"><img src="https://img.shields.io/badge/GUI-Tkinter-FF6B6B?style=for-the-badge&logo=python&logoColor=white" alt="Tkinter"/></a>
+<a href="#"><img src="https://img.shields.io/badge/Graphs-Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white" alt="Matplotlib"/></a>
+<img src="https://img.shields.io/badge/Status-Complete-00C853?style=for-the-badge&logo=github&logoColor=white" alt="Status"/>
 
 <br/>
 
+<img src="https://img.shields.io/badge/Type-PBL%20Project-FF9800?style=for-the-badge" alt="Type"/>
+<img src="https://img.shields.io/badge/Course-Operating%20Systems-8A2BE2?style=for-the-badge" alt="Course"/>
+<img src="https://img.shields.io/badge/University-Woxsen-0D47A1?style=for-the-badge" alt="University"/>
+<img src="https://img.shields.io/badge/Language-Python%203-yellow?style=for-the-badge&logo=python&logoColor=white" alt="Language"/>
+
+<br/><br/>
+
+> **A full-featured simulation of Virtual Memory Management in Operating Systems.**
+> Demonstrates FIFO and LRU page replacement step-by-step, generates a visual comparison graph,
+> and simulates logical-to-physical address translation — with both **CLI** and **GUI** modes.
+
+</div>
+
+---
+
+## Table of Contents
+
+<div align="center">
+
+| # | Section |
+|:---:|:---|
+| 01 | [Overview](#overview) |
+| 02 | [Virtual Memory Architecture](#virtual-memory-architecture) |
+| 03 | [Page Replacement Flow](#page-replacement-flow) |
+| 04 | [FIFO Algorithm](#fifo--first-in-first-out) |
+| 05 | [LRU Algorithm](#lru--least-recently-used) |
+| 06 | [Belady's Anomaly Demo](#beladys-anomaly-demonstration) |
+| 07 | [Algorithm Comparison](#algorithm-comparison) |
+| 08 | [Address Translation](#address-translation) |
+| 09 | [Features](#features) |
+| 10 | [Project Structure](#project-structure) |
+| 11 | [Installation](#installation) |
+| 12 | [Usage and Modes](#usage-and-modes) |
+| 13 | [Full Sample Walkthrough](#full-sample-walkthrough) |
+| 14 | [Performance Analysis](#performance-analysis) |
+| 15 | [Glossary](#glossary) |
+
+</div>
+
+---
+
+<a name="overview"></a>
+## Overview
+
 ```
-┌──────────────────────────────────────────────────────────────────────────┐
-│                                                                          │
-│   ┌─────────┐    Logical     ┌──────────┐   Frame#   ┌──────────────┐   │
-│   │   CPU   │ ─────────────► │   MMU    │ ──────────► │     RAM      │   │
-│   │         │    Address     │          │            │  ┌──────────┐ │   │
-│   │ Page No.│                │  Page    │            │  │ Frame 0  │ │   │
-│   │ Offset  │                │  Table   │            │  │ Frame 1  │ │   │
-│   └─────────┘                │  Lookup  │            │  │ Frame 2  │ │   │
-│                               └──────────┘            │  └──────────┘ │   │
-│                                    │                  └──────────────┘   │
-│                               Page Fault?                                │
-│                              /           \                               │
-│                            YES            NO                             │
-│                             │              │                             │
-│                    Run Replacement     Return Physical                   │
-│                    Algorithm           Address to CPU                    │
-│                 (FIFO / LRU)                                             │
-│                                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
+╔══════════════════════════════════════════════════════════════════════════╗
+║                      WHAT THIS PROJECT SIMULATES                        ║
+╠══════════════════════════════════════════════════════════════════════════╣
+║                                                                          ║
+║   Modern OS kernels manage memory using VIRTUAL MEMORY + PAGING.        ║
+║   This simulator reproduces the exact behaviour of that system:          ║
+║                                                                          ║
+║   1. CPU generates a logical address  →  [Page Number | Offset]          ║
+║   2. MMU looks up the Page Table      →  finds Frame Number              ║
+║   3. If page is in RAM                →  HIT, return data                ║
+║   4. If page is NOT in RAM            →  PAGE FAULT                      ║
+║   5. OS runs replacement algorithm    →  FIFO or LRU picks victim        ║
+║   6. Victim evicted, new page loaded  →  page table updated              ║
+║                                                                          ║
+╚══════════════════════════════════════════════════════════════════════════╝
+```
+
+This is a **PBL (Project-Based Learning)** submission for the **Operating Systems** course.
+
+---
+
+<a name="virtual-memory-architecture"></a>
+## Virtual Memory Architecture
+
+```
+  PROCESS ADDRESS SPACE              PHYSICAL RAM
+  ┌─────────────────┐                ┌─────────────────┐
+  │   Page  0       │                │   Frame  0      │ ← Page 2 loaded
+  │   Page  1       │                │   Frame  1      │ ← Page 5 loaded
+  │   Page  2  ─────┼──────┐         │   Frame  2      │ ← Page 0 loaded
+  │   Page  3       │      │         │   Frame  3      │ ← Page 7 loaded
+  │   Page  4       │      │         └─────────────────┘
+  │   Page  5  ─────┼──────┼──┐
+  │   Page  6       │      │  │      PAGE TABLE
+  │   Page  7  ─────┼──────┼──┼──┐  ┌────────┬─────────┐
+  │    ...          │      │  │  │  │ Page # │ Frame # │
+  └─────────────────┘      │  │  │  ├────────┼─────────┤
+                           │  │  │  │   0    │    2    │
+         DISK / SWAP       │  │  │  │   2    │    0    │
+  ┌─────────────────┐      │  │  │  │   5    │    1    │
+  │   Page  1  ◄────┼──────┘  │  └─►│   7    │    3    │
+  │   Page  3  ◄────┼─────────┘     └────────┴─────────┘
+  │   Page  4       │   (not yet
+  │   Page  6       │    loaded)          MMU translates:
+  └─────────────────┘              Logical → Frame → Physical
 ```
 
 ---
 
-## ⚙️ How Virtual Memory Works
+<a name="page-replacement-flow"></a>
+## Page Replacement Flow
 
 ```
-  PROCESS REQUESTS PAGE
-          │
-          ▼
-  ┌───────────────┐
-  │ Is page in    │──── YES ──► HIT ✅ → Return data to CPU
-  │ RAM (frames)? │
-  └───────────────┘
-          │
-         NO
-          │
-          ▼
-  ┌───────────────┐
-  │  PAGE FAULT   │  ← OS interrupted, begins handling
-  └───────────────┘
-          │
-          ▼
+  CPU requests Page N
+         │
+         ▼
   ┌──────────────────┐
-  │ Free frame        │──── YES ──► Load page into free frame
-  │ available?        │             Update page table → Resume
+  │  Check Page Table │
   └──────────────────┘
-          │
-         NO
-          │
-          ▼
-  ┌──────────────────────────┐
-  │   Page Replacement       │
-  │   Algorithm Selected     │
-  │                          │
-  │   FIFO → Evict oldest    │
-  │   LRU  → Evict LRU page  │
-  └──────────────────────────┘
-          │
-          ▼
-  Victim page written to disk (if dirty)
-          │
-          ▼
-  New page loaded → Page table updated → Resume process
+         │
+    ┌────┴─────┐
+   YES         NO
+    │           │
+    ▼           ▼
+  HIT ✅     PAGE FAULT ❌
+  Return      OS takes control
+  data             │
+                   ▼
+          ┌─────────────────┐
+          │ Free frame in   │
+          │ RAM available?  │
+          └─────────────────┘
+               │       │
+              YES      NO
+               │       │
+               ▼       ▼
+           Load page  Run Replacement Algorithm
+           directly   ┌────────────────────────┐
+                      │  FIFO → evict oldest   │
+                      │  LRU  → evict stale    │
+                      └────────────────────────┘
+                               │
+                               ▼
+                    Write dirty page to disk (if modified)
+                               │
+                               ▼
+                    Load new page into freed frame
+                               │
+                               ▼
+                    Update page table entry
+                               │
+                               ▼
+                    Resume CPU execution ✅
 ```
 
 ---
 
-## 🔷 FIFO — First In, First Out
+<a name="fifo--first-in-first-out"></a>
+## FIFO — First In, First Out
 
-<details open>
-<summary><b>Click to expand FIFO trace table</b></summary>
+> The **oldest** page in memory — the one loaded first — is evicted when a replacement is needed.
 
-<br/>
+<details>
+<summary><strong>Click to expand — Full FIFO Trace</strong></summary>
 
-**Reference String:** `7  0  1  2  0  3  0  4` &nbsp;&nbsp; | &nbsp;&nbsp; **Frames:** `3`
+<br>
+
+**Input:** Reference String `7 0 1 2 0 3 0 4` · Frames `3`
 
 ```
-╔══════╦══════╦═════════╦═════════╦═════════╦══════════╦══════════╗
-║ Step ║ Page ║ Frame 0 ║ Frame 1 ║ Frame 2 ║  Evicted ║  Result  ║
-╠══════╬══════╬═════════╬═════════╬═════════╬══════════╬══════════╣
-║  1   ║  7   ║    7    ║    —    ║    —    ║    —     ║ FAULT ❌ ║
-║  2   ║  0   ║    7    ║    0    ║    —    ║    —     ║ FAULT ❌ ║
-║  3   ║  1   ║    7    ║    0    ║    1    ║    —     ║ FAULT ❌ ║
-║  4   ║  2   ║    2    ║    0    ║    1    ║    7     ║ FAULT ❌ ║
-║  5   ║  0   ║    2    ║    0    ║    1    ║    —     ║  HIT  ✅ ║
-║  6   ║  3   ║    2    ║    3    ║    1    ║    0     ║ FAULT ❌ ║
-║  7   ║  0   ║    2    ║    3    ║    0    ║    1     ║ FAULT ❌ ║
-║  8   ║  4   ║    4    ║    3    ║    0    ║    2     ║ FAULT ❌ ║
-╠══════╬══════╩═════════╩═════════╩═════════╩══════════╬══════════╣
-║      ║          Total Page Faults (FIFO) = 7          ║  📉 7/8  ║
-╚══════╩═════════════════════════════════════════════════╩══════════╝
+┌──────┬──────┬─────────┬─────────┬─────────┬──────────┬───────────┐
+│ Step │ Page │ Frame 0 │ Frame 1 │ Frame 2 │  Evicted │  Result   │
+├──────┼──────┼─────────┼─────────┼─────────┼──────────┼───────────┤
+│  1   │  7   │    7    │    -    │    -    │    -     │ FAULT  ❌ │
+│  2   │  0   │    7    │    0    │    -    │    -     │ FAULT  ❌ │
+│  3   │  1   │    7    │    0    │    1    │    -     │ FAULT  ❌ │
+│  4   │  2   │    2    │    0    │    1    │    7     │ FAULT  ❌ │
+│  5   │  0   │    2    │    0    │    1    │    -     │ HIT    ✅ │
+│  6   │  3   │    2    │    3    │    1    │    0     │ FAULT  ❌ │
+│  7   │  0   │    2    │    3    │    0    │    1     │ FAULT  ❌ │
+│  8   │  4   │    4    │    3    │    0    │    2     │ FAULT  ❌ │
+├──────┴──────┴─────────┴─────────┴─────────┴──────────┼───────────┤
+│         Total FIFO Faults = 7   │   Hits = 1          │ Rate 12.5%│
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-**FIFO Queue Progression:**
+**FIFO Queue State at Each Step (front → rear):**
+
 ```
-Start:  [ ]
-Step 1: [ 7 ]            ← 7 enters rear
-Step 2: [ 7 → 0 ]        ← 0 enters rear
-Step 3: [ 7 → 0 → 1 ]    ← 1 enters rear, queue full
-Step 4: [ 0 → 1 → 2 ]    ← 7 evicted from front, 2 enters rear
-Step 5: [ 0 → 1 → 2 ]    ← 0 is HIT, no change
-Step 6: [ 1 → 2 → 3 ]    ← 0 evicted from front, 3 enters rear
-Step 7: [ 2 → 3 → 0 ]    ← 1 evicted from front, 0 enters rear
-Step 8: [ 3 → 0 → 4 ]    ← 2 evicted from front, 4 enters rear
+Step 1:  [ 7 ]                  ← 7 enters
+Step 2:  [ 7 → 0 ]              ← 0 enters
+Step 3:  [ 7 → 0 → 1 ]          ← 1 enters  (queue FULL)
+Step 4:  [ 0 → 1 → 2 ]          ← 7 evicted (front), 2 enters rear
+Step 5:  [ 0 → 1 → 2 ]          ← 0 HIT, no queue change
+Step 6:  [ 1 → 2 → 3 ]          ← 0 evicted (front), 3 enters rear
+Step 7:  [ 2 → 3 → 0 ]          ← 1 evicted (front), 0 enters rear
+Step 8:  [ 3 → 0 → 4 ]          ← 2 evicted (front), 4 enters rear
 ```
+
+> **Note at Step 6:** Page `0` was just used at Step 5, yet FIFO evicts it because it was loaded earliest. This is the core weakness — FIFO is completely blind to usage recency.
 
 </details>
 
-<br/>
+<br>
 
-| ✅ Advantages | ❌ Disadvantages |
-|---|---|
-| Dead simple to implement | Suffers from **Belady's Anomaly** |
-| No extra hardware required | Ignores access frequency completely |
-| Predictable, queue-based | May evict critical, frequently used pages |
-| Low overhead | Worst average performance of common algorithms |
+| Advantages | Disadvantages |
+|:---|:---|
+| Extremely simple to implement | Suffers from **Belady's Anomaly** |
+| No hardware support needed | Ignores access frequency entirely |
+| Predictable, deterministic | May evict heavily-used pages |
+| Minimal runtime overhead | Worst average performance of all common algorithms |
 
 ---
 
-## 🔶 LRU — Least Recently Used
+<a name="lru--least-recently-used"></a>
+## LRU — Least Recently Used
 
-<details open>
-<summary><b>Click to expand LRU trace table</b></summary>
+> The page that has **not been used for the longest time** is chosen as the eviction victim.
 
-<br/>
+<details>
+<summary><strong>Click to expand — Full LRU Trace</strong></summary>
 
-**Reference String:** `7  0  1  2  0  3  0  4` &nbsp;&nbsp; | &nbsp;&nbsp; **Frames:** `3`
+<br>
+
+**Input:** Reference String `7 0 1 2 0 3 0 4` · Frames `3`
 
 ```
-╔══════╦══════╦═════════╦═════════╦═════════╦══════════╦══════════╗
-║ Step ║ Page ║ Frame 0 ║ Frame 1 ║ Frame 2 ║  Evicted ║  Result  ║
-╠══════╬══════╬═════════╬═════════╬═════════╬══════════╬══════════╣
-║  1   ║  7   ║    7    ║    —    ║    —    ║    —     ║ FAULT ❌ ║
-║  2   ║  0   ║    7    ║    0    ║    —    ║    —     ║ FAULT ❌ ║
-║  3   ║  1   ║    7    ║    0    ║    1    ║    —     ║ FAULT ❌ ║
-║  4   ║  2   ║    2    ║    0    ║    1    ║    7  🕐  ║ FAULT ❌ ║
-║  5   ║  0   ║    2    ║    0    ║    1    ║    —     ║  HIT  ✅ ║
-║  6   ║  3   ║    2    ║    0    ║    3    ║    1  🕐  ║ FAULT ❌ ║
-║  7   ║  0   ║    2    ║    0    ║    3    ║    —     ║  HIT  ✅ ║
-║  8   ║  4   ║    4    ║    0    ║    3    ║    2  🕐  ║ FAULT ❌ ║
-╠══════╬══════╩═════════╩═════════╩═════════╩══════════╬══════════╣
-║      ║          Total Page Faults (LRU) = 6           ║  📉 6/8  ║
-╚══════╩══════════════════════════════════════════════════╩══════════╝
+┌──────┬──────┬─────────┬─────────┬─────────┬───────────┬───────────┐
+│ Step │ Page │ Frame 0 │ Frame 1 │ Frame 2 │  Evicted  │  Result   │
+├──────┼──────┼─────────┼─────────┼─────────┼───────────┼───────────┤
+│  1   │  7   │    7    │    -    │    -    │     -     │ FAULT  ❌ │
+│  2   │  0   │    7    │    0    │    -    │     -     │ FAULT  ❌ │
+│  3   │  1   │    7    │    0    │    1    │     -     │ FAULT  ❌ │
+│  4   │  2   │    2    │    0    │    1    │  7 (LRU)  │ FAULT  ❌ │
+│  5   │  0   │    2    │    0    │    1    │     -     │ HIT    ✅ │
+│  6   │  3   │    2    │    0    │    3    │  1 (LRU)  │ FAULT  ❌ │
+│  7   │  0   │    2    │    0    │    3    │     -     │ HIT    ✅ │
+│  8   │  4   │    4    │    0    │    3    │  2 (LRU)  │ FAULT  ❌ │
+├──────┴──────┴─────────┴─────────┴─────────┴───────────┼───────────┤
+│         Total LRU Faults = 6   │   Hits = 2            │ Rate 25.0%│
+└───────────────────────────────────────────────────────────────────┘
 ```
-> 🕐 = Evicted because it was Least Recently Used
 
-**LRU Stack Progression (MRU → LRU):**
+**LRU Stack State at Each Step (MRU ← top, LRU ← bottom):**
+
 ```
-Start:  [ ]
-Step 1: [ 7 ]               → Most Recent: 7
-Step 2: [ 0 | 7 ]           → Most Recent: 0
-Step 3: [ 1 | 0 | 7 ]       → Most Recent: 1
-Step 4: [ 2 | 1 | 0 ]       → 7 evicted (bottom/LRU), 2 added
-Step 5: [ 0 | 2 | 1 ]       → 0 moved to top on HIT
-Step 6: [ 3 | 0 | 2 ]       → 1 evicted (LRU), 3 added
-Step 7: [ 0 | 3 | 2 ]       → 0 moved to top on HIT
-Step 8: [ 4 | 0 | 3 ]       → 2 evicted (LRU), 4 added
+Step 1:  [ 7 ]               ← Most Recent = 7
+Step 2:  [ 0 | 7 ]           ← Most Recent = 0
+Step 3:  [ 1 | 0 | 7 ]       ← Most Recent = 1  (stack FULL)
+Step 4:  [ 2 | 1 | 0 ]       ← 7 evicted (bottom/LRU), 2 at top
+Step 5:  [ 0 | 2 | 1 ]       ← 0 HIT: moved to top, stack reordered
+Step 6:  [ 3 | 0 | 2 ]       ← 1 evicted (bottom/LRU), 3 at top
+Step 7:  [ 0 | 3 | 2 ]       ← 0 HIT: moved to top, stack reordered
+Step 8:  [ 4 | 0 | 3 ]       ← 2 evicted (bottom/LRU), 4 at top
 ```
+
+> **Why LRU wins at Step 6:** Page `0` was used at Step 5, so it sits at the top of the LRU stack — protected. LRU correctly identifies page `1` (unused since Step 3) as the real victim. FIFO evicts `0` instead — a recently active page.
 
 </details>
 
-<br/>
+<br>
 
-| ✅ Advantages | ❌ Disadvantages |
-|---|---|
+| Advantages | Disadvantages |
+|:---|:---|
 | Exploits **temporal locality** | More complex to implement |
-| **No Belady's Anomaly** | Requires usage tracking (timestamps/counters) |
-| Closest to Optimal (OPT) | May need hardware reference bits |
-| Retains hot pages effectively | Higher overhead than FIFO |
+| **Immune to Belady's Anomaly** | Needs usage tracking (timestamps / counters) |
+| Closest to the theoretical Optimal (OPT) | May require hardware reference bits |
+| Retains hot/active pages | Higher overhead than FIFO |
 
 ---
 
-## 📊 Algorithm Comparison
+<a name="beladys-anomaly-demonstration"></a>
+## Belady's Anomaly Demonstration
 
-### Head-to-Head
+> **Belady's Anomaly:** With FIFO, adding *more* physical frames can sometimes cause *more* page faults. LRU is immune.
 
-| Property | 🔷 FIFO | 🔶 LRU |
-|:---|:---:|:---:|
-| Eviction Policy | Oldest loaded page | Least recently accessed |
-| Belady's Anomaly | ✅ Affected | ❌ Immune |
-| Implementation Complexity | 🟢 Simple | 🟡 Moderate |
-| Hardware Needed | None | Reference bit / counter |
-| Temporal Locality Aware | ❌ No | ✅ Yes |
-| Performance (example) | **7 faults** | **6 faults** |
-| Best for | Teaching / toy OS | Production systems |
-| Hit Rate (example) | 12.5% | 25.0% |
-
-### Visual Performance Chart
+**Reference String:** `1 2 3 4 1 2 5 1 2 3 4 5`
 
 ```
-  Page Faults
-  │
-8 ┤
-7 ┤  ████████████████████
-6 ┤  ████████████████████  ██████████████████
-5 ┤  ████████████████████  ██████████████████
-4 ┤  ████████████████████  ██████████████████
-3 ┤  ████████████████████  ██████████████████
-2 ┤  ████████████████████  ██████████████████
-1 ┤  ████████████████████  ██████████████████
-  └──────────────────────────────────────────────
-         FIFO (7)               LRU (6)
+┌─────────────────────────────────────────────────────────────────┐
+│                        FIFO — 3 Frames                          │
+├──────┬──────┬─────────┬─────────┬─────────┬────────────────────┤
+│ Step │ Page │ Frame 0 │ Frame 1 │ Frame 2 │ Result             │
+├──────┼──────┼─────────┼─────────┼─────────┼────────────────────┤
+│  1   │  1   │    1    │    -    │    -    │ FAULT ❌           │
+│  2   │  2   │    1    │    2    │    -    │ FAULT ❌           │
+│  3   │  3   │    1    │    2    │    3    │ FAULT ❌           │
+│  4   │  4   │    4    │    2    │    3    │ FAULT ❌           │
+│  5   │  1   │    4    │    1    │    3    │ FAULT ❌           │
+│  6   │  2   │    4    │    1    │    2    │ FAULT ❌           │
+│  7   │  5   │    5    │    1    │    2    │ FAULT ❌           │
+│  8   │  1   │    5    │    1    │    2    │ HIT   ✅           │
+│  9   │  2   │    5    │    1    │    2    │ HIT   ✅           │
+│ 10   │  3   │    5    │    3    │    2    │ FAULT ❌           │
+│ 11   │  4   │    5    │    3    │    4    │ FAULT ❌           │
+│ 12   │  5   │    5    │    3    │    4    │ HIT   ✅           │
+├──────┴──────┴─────────┴─────────┴─────────┴────────────────────┤
+│                            FIFO 3 Frames = 9 faults            │
+└─────────────────────────────────────────────────────────────────┘
 
-   ⬆️ FIFO: 7 faults    LRU: 6 faults  →  LRU wins ✅
-               Lower Bar = Better Algorithm
+┌─────────────────────────────────────────────────────────────────────┐
+│                       FIFO — 4 Frames  (MORE frames = MORE faults!) │
+├──────┬──────┬─────────┬─────────┬─────────┬─────────┬─────────────┤
+│ Step │ Page │ Frame 0 │ Frame 1 │ Frame 2 │ Frame 3 │ Result      │
+├──────┼──────┼─────────┼─────────┼─────────┼─────────┼─────────────┤
+│  1   │  1   │    1    │    -    │    -    │    -    │ FAULT ❌    │
+│  2   │  2   │    1    │    2    │    -    │    -    │ FAULT ❌    │
+│  3   │  3   │    1    │    2    │    3    │    -    │ FAULT ❌    │
+│  4   │  4   │    1    │    2    │    3    │    4    │ FAULT ❌    │
+│  5   │  1   │    1    │    2    │    3    │    4    │ HIT   ✅    │
+│  6   │  2   │    1    │    2    │    3    │    4    │ HIT   ✅    │
+│  7   │  5   │    5    │    2    │    3    │    4    │ FAULT ❌    │
+│  8   │  1   │    5    │    1    │    3    │    4    │ FAULT ❌    │
+│  9   │  2   │    5    │    1    │    2    │    4    │ FAULT ❌    │
+│ 10   │  3   │    5    │    1    │    2    │    3    │ FAULT ❌    │
+│ 11   │  4   │    4    │    1    │    2    │    3    │ FAULT ❌    │
+│ 12   │  5   │    4    │    5    │    2    │    3    │ FAULT ❌    │
+├──────┴──────┴─────────┴─────────┴─────────┴─────────┼─────────────┤
+│                            FIFO 4 Frames = 10 faults ← MORE FAULTS │
+└─────────────────────────────────────────────────────────────────────┘
 ```
 
-> 💡 **Why LRU wins:** When page `0` was referenced at step 5, FIFO had already queued it for near-term eviction. LRU recognised it was recently used and kept it — saving 1 fault. This is **temporal locality** in action.
+```
+  Belady's Anomaly Summary
+  ┌──────────────┬──────────────┬──────────────┐
+  │  Algorithm   │   3 Frames   │   4 Frames   │
+  ├──────────────┼──────────────┼──────────────┤
+  │  FIFO        │  9 faults    │  10 faults   │  ← ANOMALY (more frames = more faults)
+  │  LRU         │  8 faults    │   6 faults   │  ← NORMAL  (more frames = fewer faults)
+  └──────────────┴──────────────┴──────────────┘
+
+  FIFO: Adding 1 frame caused +1 extra fault  [BUG IN FIFO]
+  LRU:  Adding 1 frame saved  -2 faults       [CORRECT BEHAVIOUR]
+```
 
 ---
 
-## 🔄 Address Translation
+<a name="algorithm-comparison"></a>
+## Algorithm Comparison
+
+### Head-to-Head Property Table
+
+| Property | FIFO | LRU | Optimal (OPT) |
+|:---|:---:|:---:|:---:|
+| Eviction Rule | Oldest loaded | Least recently used | Furthest future use |
+| Belady's Anomaly | Affected | Immune | Immune |
+| Implementation | Simple queue | Counter / stack | Not implementable |
+| Hardware Support Needed | None | Reference bits | Future knowledge |
+| Temporal Locality | Ignored | Exploited | Exploited |
+| Page Faults (example 8 refs, 3 frames) | 7 | 6 | 5 (theoretical) |
+| Hit Rate (example) | 12.5% | 25.0% | 37.5% (theoretical) |
+| Complexity | O(1) | O(n) | N/A |
+
+### Visual Fault Comparison
 
 ```
-┌──────────────────────────────────────────────────────────────────┐
-│                  LOGICAL → PHYSICAL ADDRESS MAP                  │
-│                                                                  │
-│   CPU generates Logical Address                                  │
-│   ┌──────────────────────────────┐                               │
-│   │  Logical Address = 350       │  (Page Size = 100 bytes)      │
-│   │  Page Number = 350 ÷ 100 = 3 │                               │
-│   │  Offset      = 350 mod 100 = 50│                              │
-│   └──────────────────────────────┘                               │
-│                    │                                             │
-│                    ▼                                             │
-│              ┌─────────────┐                                     │
-│              │  Page Table │                                     │
-│              ├──────┬──────┤                                     │
-│              │ P.No │ Frame│                                     │
-│              ├──────┼──────┤                                     │
-│              │  0   │  2   │                                     │
-│              │  1   │  0   │                                     │
-│              │  2   │  4   │                                     │
-│              │  3   │  1   │ ← Page 3 is in Frame 1             │
-│              └──────┴──────┘                                     │
-│                    │                                             │
-│                    ▼                                             │
-│   Physical Address = (Frame × Page Size) + Offset               │
-│                    = (1 × 100) + 50 = 150                        │
-│                                                                  │
-│   ┌─────────────────────────────────────────────────────────┐    │
-│   │  Logical 350  →  Page 3, Offset 50  →  Physical 150    │    │
-│   └─────────────────────────────────────────────────────────┘    │
-└──────────────────────────────────────────────────────────────────┘
+  Page Faults (Reference: 7 0 1 2 0 3 0 4, Frames: 3)
+  ════════════════════════════════════════════════════
+
+  10 ┤
+   9 ┤
+   8 ┤
+   7 ┤  ████████████████
+   6 ┤  ████████████████  ██████████████
+   5 ┤  ████████████████  ██████████████
+   4 ┤  ████████████████  ██████████████
+   3 ┤  ████████████████  ██████████████
+   2 ┤  ████████████████  ██████████████
+   1 ┤  ████████████████  ██████████████
+     └──────────────────────────────────────
+             FIFO              LRU
+             (7)               (6)
+
+       ↑ Lower bar = Better  ↑
+
+   FIFO hit rate:  1/8 = 12.5%  ████░░░░░░░░░░░░░░░░
+   LRU  hit rate:  2/8 = 25.0%  ████████░░░░░░░░░░░░
+```
+
+---
+
+<a name="address-translation"></a>
+## Address Translation
+
+```
+╔══════════════════════════════════════════════════════════════════════╗
+║              LOGICAL  →  PHYSICAL  ADDRESS  TRANSLATION             ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║   CPU  ──── generates ────►  Logical Address                         ║
+║                              │                                       ║
+║                         ┌────┴────────────────────┐                 ║
+║                         │  Split by Page Size      │                 ║
+║                         │  Logical = 350           │                 ║
+║                         │  Page Size = 100 bytes   │                 ║
+║                         │                          │                 ║
+║                         │  Page No = 350 ÷ 100 = 3 │                 ║
+║                         │  Offset  = 350 mod 100= 50│                ║
+║                         └────┬────────────────────┘                 ║
+║                              │                                       ║
+║                              ▼                                       ║
+║                         Page Table                                   ║
+║                    ┌───────────────────┐                             ║
+║                    │  Page 0 → Frame 2 │                             ║
+║                    │  Page 1 → Frame 0 │                             ║
+║                    │  Page 2 → Frame 4 │                             ║
+║                    │  Page 3 → Frame 1 │  ← lookup Page 3           ║
+║                    └───────────────────┘                             ║
+║                              │  Frame = 1                            ║
+║                              ▼                                       ║
+║   Physical Address = (Frame × Page Size) + Offset                   ║
+║                    = (  1   ×    100   ) +   50                      ║
+║                    =   150                                           ║
+║                                                                      ║
+║   Result: Logical 350  →  Physical 150                              ║
+╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 ### Translation Formula
 
 ```
-┌─────────────────────────────────────────────────────┐
-│                                                     │
-│   Page Number = ⌊ Logical Address ÷ Page Size ⌋    │
-│   Offset      = Logical Address mod Page Size       │
-│                                                     │
-│   Physical Address = (Frame Number × Page Size)     │
-│                    +  Offset                        │
-│                                                     │
-└─────────────────────────────────────────────────────┘
+  ┌────────────────────────────────────────────────────────────┐
+  │                                                            │
+  │   Page Number  =  floor( Logical Address  ÷  Page Size )  │
+  │   Offset       =         Logical Address mod Page Size     │
+  │                                                            │
+  │   Physical Address  =  (Frame Number × Page Size)          │
+  │                     +   Offset                             │
+  │                                                            │
+  └────────────────────────────────────────────────────────────┘
 ```
 
-### Example Lookups
+### Worked Examples
 
-| Logical Address | Page Size | Page No. | Offset | Frame (Table) | Physical Address |
+| Logical Address | Page Size | Page No | Offset | Frame | Physical Address |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | `100` | 100 | 1 | 0 | 0 | **0** |
 | `350` | 100 | 3 | 50 | 1 | **150** |
 | `275` | 100 | 2 | 75 | 4 | **475** |
-| `0`   | 100 | 0 | 0  | 2 | **200** |
+| `0` | 100 | 0 | 0 | 2 | **200** |
+| `499` | 100 | 4 | 99 | 3 | **399** |
 
 ---
 
-## ✨ Features
+<a name="features"></a>
+## Features
 
-<div align="center">
-
-| # | Feature | Description |
-|:---:|:---|:---|
-| 🖥️ | **Dual Mode Interface** | Full CLI mode or Tkinter-based GUI — user's choice at startup |
-| 🔷 | **FIFO Simulation** | Queue-based page replacement with step-by-step trace |
-| 🔶 | **LRU Simulation** | Counter/timestamp-based tracking with detailed output |
-| 📊 | **Bar Graph** | Matplotlib pop-up comparing page fault counts visually |
-| 🔢 | **Address Translation** | Full logical → physical mapping with formula explanation |
-| 📋 | **Step Trace** | Every page access shown with HIT ✅ / FAULT ❌ labels |
-| 🧮 | **Hit Rate Reporting** | Calculates and displays efficiency percentage per algorithm |
-| 📂 | **Study Materials** | Includes project report, viva Q&A, and output guide |
-
-</div>
+| Feature | Details |
+|:---|:---|
+| Dual Interface | Full **CLI** terminal mode OR **Tkinter GUI** window — selected at startup |
+| FIFO Simulation | Queue-based replacement with step-by-step HIT/FAULT trace printed per access |
+| LRU Simulation | Counter-based tracking; evicts stale page with detailed trace output |
+| Bar Graph | Matplotlib pop-up comparing FIFO vs LRU page fault counts side by side |
+| Address Translation | Takes logical addresses + page size, outputs physical addresses with formula |
+| Hit Rate Report | Calculates and displays efficiency percentage for each algorithm |
+| Study Materials | Includes formal project report, viva Q&A guide, and output explanation doc |
 
 ---
 
-## 📁 Project Structure
+<a name="project-structure"></a>
+## Project Structure
 
 ```
-📦 OS-Paging-Virtual-Memory-Simulation/
+OS-Paging-Virtual-Memory-Simulation/
 │
-├── 🐍 paging_simulator.py     ← Core application — CLI + GUI in one file
-│                                 ├─ FIFO algorithm
-│                                 ├─ LRU algorithm
-│                                 ├─ Address Translation module
-│                                 ├─ Matplotlib graph generator
-│                                 └─ Tkinter GUI window
+├── paging_simulator.py     ←  Core application (CLI + GUI in one file)
+│                               ├─ simulate_fifo()     FIFO replacement engine
+│                               ├─ simulate_lru()      LRU replacement engine
+│                               ├─ translate_address() Logical → Physical
+│                               ├─ plot_comparison()   Matplotlib bar chart
+│                               └─ run_gui()           Tkinter window
 │
-├── 📋 requirements.txt        ← Python dependencies (matplotlib)
+├── requirements.txt        ←  Python dependencies  (matplotlib)
 │
-├── 📄 PROJECT_REPORT.md       ← Formal report: abstract → conclusion
-├── 📄 VIVA_QUESTIONS.md       ← Q&A for viva voce exam prep
-├── 📄 OUTPUT_GUIDE.md         ← Explains every line of output in detail
-└── 📄 README.md               ← You are here
+├── PROJECT_REPORT.md       ←  Formal report: Abstract → System Analysis → Conclusion
+├── VIVA_QUESTIONS.md       ←  Common viva Q&A for OS exam prep
+├── OUTPUT_GUIDE.md         ←  Explains every line of simulator output in detail
+└── README.md               ←  This file
 ```
 
 ---
 
-## 🛠️ Requirements & Installation
+<a name="installation"></a>
+## Installation
 
 ### Prerequisites
 
-| Tool | Version | Install |
+| Tool | Version | Notes |
 |:---|:---:|:---|
-| Python | ≥ 3.x | [python.org](https://python.org) |
-| pip | Latest | Bundled with Python |
-| `matplotlib` | Latest | `pip install matplotlib` |
-| `tkinter` | Built-in | No install needed |
+| Python | 3.x | [python.org/downloads](https://python.org/downloads) |
+| pip | Latest | Bundled with Python 3 |
+| matplotlib | Latest | Graph generation |
+| tkinter | Built-in | No install required — ships with Python |
 
-### Quick Setup
+### Setup Steps
 
 ```bash
-# Step 1 — Clone the repository
+# 1. Clone the repository
 git clone https://github.com/RishvinReddy/OS-Paging-Virtual-Memory-Simulation.git
 
-# Step 2 — Move into the project directory
+# 2. Enter the project folder
 cd OS-Paging-Virtual-Memory-Simulation
 
-# Step 3 — Install dependencies
+# 3. Install dependencies
 pip install -r requirements.txt
 
-# Step 4 — Launch the simulator
+# 4. Run the simulator
 python paging_simulator.py
 ```
 
 ---
 
-## 🚀 Usage & Modes
+<a name="usage-and-modes"></a>
+## Usage and Modes
 
 ### Startup Menu
 
 ```
-╔══════════════════════════════════════╗
-║    Paging & Virtual Memory Simulator ║
-╠══════════════════════════════════════╣
-║  1.  CLI (Command Line Interface)    ║
-║  2.  GUI (Graphical User Interface)  ║
-║  3.  Exit                            ║
-╠══════════════════════════════════════╣
-║  Enter your choice (1–3): _          ║
-╚══════════════════════════════════════╝
+╔══════════════════════════════════════════╗
+║   Paging and Virtual Memory Simulator   ║
+╠══════════════════════════════════════════╣
+║                                          ║
+║   1.  CLI  (Command Line Interface)      ║
+║   2.  GUI  (Graphical User Interface)    ║
+║   3.  Exit                               ║
+║                                          ║
+║   Enter your choice (1-3):  _            ║
+╚══════════════════════════════════════════╝
 ```
 
-### 🖤 Mode 1 — CLI
-
-- Runs entirely in terminal
-- Prompts: reference string → number of frames
-- Outputs step-by-step trace for both FIFO and LRU
-- Address translation with formula shown inline
-
-### 🪟 Mode 2 — GUI
+### Mode 1 — CLI
 
 ```
-┌─────────────────────────────────────────────────────┐
-│  🖥️  Paging & Virtual Memory Simulator              │
-├─────────────────────────────────────────────────────┤
-│                                                     │
-│  Page Reference String:  [ 7 0 1 2 0 3 0 4      ]  │
-│  Number of Frames:       [ 3                     ]  │
-│                                                     │
-│  ┌─────────┐  ┌─────────┐  ┌──────────────────┐    │
-│  │ Run FIFO│  │ Run LRU │  │   Show Graph 📊  │    │
-│  └─────────┘  └─────────┘  └──────────────────┘    │
-│                                                     │
-├─────────────────────────────────────────────────────┤
-│  Output:                                            │
-│  ─────────────────────────────────────────────────  │
-│  Page 7 → FAULT | Memory: [7]                      │
-│  Page 0 → FAULT | Memory: [7, 0]                   │
-│  Page 1 → FAULT | Memory: [7, 0, 1]                │
-│  Page 2 → FAULT | Memory: [0, 1, 2]                │
-│  Page 0 → HIT   | Memory: [0, 1, 2]                │
-│  ...                                               │
-│  Total Page Faults: 7                              │
-└─────────────────────────────────────────────────────┘
+  Enter page reference string : 7 0 1 2 0 3 0 4
+  Enter number of frames      : 3
+
+  Running FIFO...
+  ──────────────────────────────────────────
+  Page  7  FAULT   Memory: [7]
+  Page  0  FAULT   Memory: [7, 0]
+  Page  1  FAULT   Memory: [7, 0, 1]
+  Page  2  FAULT   Memory: [0, 1, 2]   (evicted: 7)
+  Page  0  HIT     Memory: [0, 1, 2]
+  Page  3  FAULT   Memory: [1, 2, 3]   (evicted: 0)
+  Page  0  FAULT   Memory: [2, 3, 0]   (evicted: 1)
+  Page  4  FAULT   Memory: [3, 0, 4]   (evicted: 2)
+  ──────────────────────────────────────────
+  Total Faults: 7   Hits: 1   Hit Rate: 12.50%
+```
+
+### Mode 2 — GUI
+
+```
+  ┌────────────────────────────────────────────────────────┐
+  │   Paging and Virtual Memory Simulator                  │
+  ├────────────────────────────────────────────────────────┤
+  │                                                        │
+  │   Page Reference String:  [ 7 0 1 2 0 3 0 4        ]  │
+  │   Number of Frames:       [ 3                       ]  │
+  │                                                        │
+  │   [ Run FIFO ]    [ Run LRU ]    [ Show Graph ]        │
+  │                                                        │
+  ├────────────────────────────────────────────────────────┤
+  │   Output                                               │
+  │   ────────────────────────────────────────────────     │
+  │   Page 7  FAULT   Memory: [7]                          │
+  │   Page 0  FAULT   Memory: [7, 0]                       │
+  │   Page 1  FAULT   Memory: [7, 0, 1]                    │
+  │   Page 2  FAULT   Memory: [0, 1, 2]                    │
+  │   Page 0  HIT     Memory: [0, 1, 2]                    │
+  │   ...                                                  │
+  │   Total Faults: 7   Hit Rate: 12.50%                   │
+  └────────────────────────────────────────────────────────┘
+```
+
+### Mode 2 — Graph Output
+
+```
+  A Matplotlib pop-up window appears:
+
+  ┌─────────────────────────────────────────┐
+  │   Page Fault Comparison                 │
+  │                                         │
+  │  8 ┤                                    │
+  │  7 ┤  ███                               │
+  │  6 ┤  ███  ███                          │
+  │  5 ┤  ███  ███                          │
+  │  4 ┤  ███  ███                          │
+  │  3 ┤  ███  ███                          │
+  │  2 ┤  ███  ███                          │
+  │  1 ┤  ███  ███                          │
+  │    └──────────────                      │
+  │       FIFO  LRU                         │
+  │       (7)   (6)                         │
+  └─────────────────────────────────────────┘
 ```
 
 ---
 
-## 📋 Full Sample Walkthrough
+<a name="full-sample-walkthrough"></a>
+## Full Sample Walkthrough
+
+**Reference String:** `7 0 1 2 0 3 0 4` · **Frames:** `3`
 
 <details>
-<summary><b>🔷 FIFO Full Output — click to expand</b></summary>
+<summary><strong>FIFO Full Output</strong></summary>
+
+<br>
 
 ```
 Reference String : 7  0  1  2  0  3  0  4
-Frames           : 3
 Algorithm        : FIFO
-─────────────────────────────────────────────────
- Step 1  │  Page  7  │  FAULT ❌  │  Memory: [ 7 ]
- Step 2  │  Page  0  │  FAULT ❌  │  Memory: [ 7, 0 ]
- Step 3  │  Page  1  │  FAULT ❌  │  Memory: [ 7, 0, 1 ]
- Step 4  │  Page  2  │  FAULT ❌  │  Memory: [ 0, 1, 2 ]   ← 7 evicted
- Step 5  │  Page  0  │  HIT   ✅  │  Memory: [ 0, 1, 2 ]
- Step 6  │  Page  3  │  FAULT ❌  │  Memory: [ 1, 2, 3 ]   ← 0 evicted
- Step 7  │  Page  0  │  FAULT ❌  │  Memory: [ 2, 3, 0 ]   ← 1 evicted
- Step 8  │  Page  4  │  FAULT ❌  │  Memory: [ 3, 0, 4 ]   ← 2 evicted
-─────────────────────────────────────────────────
- Total Faults : 7   │   Total Hits : 1   │   Hit Rate : 12.5%
-─────────────────────────────────────────────────
+Frames           : 3
+────────────────────────────────────────────────────────
+Step 1   Page 7   FAULT    Memory: [ 7 ]
+Step 2   Page 0   FAULT    Memory: [ 7, 0 ]
+Step 3   Page 1   FAULT    Memory: [ 7, 0, 1 ]
+Step 4   Page 2   FAULT    Memory: [ 0, 1, 2 ]    evicted: 7
+Step 5   Page 0   HIT      Memory: [ 0, 1, 2 ]
+Step 6   Page 3   FAULT    Memory: [ 1, 2, 3 ]    evicted: 0
+Step 7   Page 0   FAULT    Memory: [ 2, 3, 0 ]    evicted: 1
+Step 8   Page 4   FAULT    Memory: [ 3, 0, 4 ]    evicted: 2
+────────────────────────────────────────────────────────
+Total Faults : 7    Hits : 1    Hit Rate : 12.50%
 ```
 
 </details>
 
 <details>
-<summary><b>🔶 LRU Full Output — click to expand</b></summary>
+<summary><strong>LRU Full Output</strong></summary>
+
+<br>
 
 ```
 Reference String : 7  0  1  2  0  3  0  4
-Frames           : 3
 Algorithm        : LRU
-─────────────────────────────────────────────────
- Step 1  │  Page  7  │  FAULT ❌  │  Memory: [ 7 ]
- Step 2  │  Page  0  │  FAULT ❌  │  Memory: [ 7, 0 ]
- Step 3  │  Page  1  │  FAULT ❌  │  Memory: [ 7, 0, 1 ]
- Step 4  │  Page  2  │  FAULT ❌  │  Memory: [ 0, 1, 2 ]   ← 7 evicted (LRU)
- Step 5  │  Page  0  │  HIT   ✅  │  Memory: [ 0, 1, 2 ]   ← 0 refreshed
- Step 6  │  Page  3  │  FAULT ❌  │  Memory: [ 0, 2, 3 ]   ← 1 evicted (LRU)
- Step 7  │  Page  0  │  HIT   ✅  │  Memory: [ 0, 2, 3 ]   ← 0 refreshed
- Step 8  │  Page  4  │  FAULT ❌  │  Memory: [ 0, 3, 4 ]   ← 2 evicted (LRU)
-─────────────────────────────────────────────────
- Total Faults : 6   │   Total Hits : 2   │   Hit Rate : 25.0%
-─────────────────────────────────────────────────
+Frames           : 3
+────────────────────────────────────────────────────────
+Step 1   Page 7   FAULT    Memory: [ 7 ]
+Step 2   Page 0   FAULT    Memory: [ 7, 0 ]
+Step 3   Page 1   FAULT    Memory: [ 7, 0, 1 ]
+Step 4   Page 2   FAULT    Memory: [ 0, 1, 2 ]    evicted: 7  (LRU)
+Step 5   Page 0   HIT      Memory: [ 0, 1, 2 ]    0 refreshed
+Step 6   Page 3   FAULT    Memory: [ 0, 2, 3 ]    evicted: 1  (LRU)
+Step 7   Page 0   HIT      Memory: [ 0, 2, 3 ]    0 refreshed
+Step 8   Page 4   FAULT    Memory: [ 0, 3, 4 ]    evicted: 2  (LRU)
+────────────────────────────────────────────────────────
+Total Faults : 6    Hits : 2    Hit Rate : 25.00%
 ```
 
 </details>
 
-<br/>
+---
+
+<a name="performance-analysis"></a>
+## Performance Analysis
 
 ```
-  Final Score
-  ═══════════════════════════════════════════════
-  FIFO  →  7 faults  │  1 hit  │  12.5% hit rate
-  LRU   →  6 faults  │  2 hits │  25.0% hit rate
-  ───────────────────────────────────────────────
-  Winner: LRU — saves 1 fault by exploiting
-          temporal locality of page 0 ✅
-  ═══════════════════════════════════════════════
+  ┌────────────────────────────────────────────────────────────┐
+  │                  FINAL SCORE SUMMARY                       │
+  ├────────────────┬──────────────┬──────────────┬────────────┤
+  │  Algorithm     │  Page Faults │  Page Hits   │  Hit Rate  │
+  ├────────────────┼──────────────┼──────────────┼────────────┤
+  │  FIFO          │     7        │     1        │   12.50%   │
+  │  LRU           │     6        │     2        │   25.00%   │
+  │  OPT (theory)  │     5        │     3        │   37.50%   │
+  ├────────────────┼──────────────┼──────────────┼────────────┤
+  │  Winner        │    LRU       │    LRU       │    LRU     │
+  └────────────────┴──────────────┴──────────────┴────────────┘
+
+  Why LRU beats FIFO here:
+  → Page 0 is accessed at Step 5 (HIT under both).
+  → At Step 6, FIFO still treats 0 as old (entered early) → evicts it.
+  → LRU sees 0 was just refreshed at Step 5 → keeps it, evicts 1.
+  → This saves exactly 1 fault, and doubles the hit rate.
+  → Root cause: temporal locality of page 0.
 ```
 
 ---
 
-## 📚 Concepts Quick Reference
+<a name="glossary"></a>
+## Glossary
 
 <details open>
-<summary><b>Core OS / Memory Terms</b></summary>
+<summary><strong>Core OS and Memory Management Terms</strong></summary>
 
-<br/>
+<br>
 
 | Term | Definition |
 |:---|:---|
-| **Virtual Memory** | OS abstraction allowing processes to use more memory than physically available in RAM |
-| **Paging** | Memory management that divides logical & physical memory into fixed-size **pages** and **frames** |
-| **Page** | Fixed-size block of logical (process) memory |
-| **Frame** | Fixed-size block of physical (RAM) memory — same size as a page |
-| **Page Fault** | Exception raised when CPU accesses a page not currently in RAM |
-| **Page Table** | OS data structure mapping page numbers → frame numbers |
-| **MMU** | Memory Management Unit — hardware chip that translates logical → physical addresses |
-| **Logical Address** | Address generated by CPU: `[Page No. | Offset]` |
-| **Physical Address** | Actual RAM address: `[Frame No. | Offset]` |
-| **Demand Paging** | Pages loaded into RAM only when first accessed — not at process start |
-| **FIFO** | Evicts the page that has been in memory the **longest** (oldest) |
-| **LRU** | Evicts the page that was **used least recently** (stale) |
-| **Belady's Anomaly** | FIFO bug where adding **more frames** causes **more page faults** |
-| **Temporal Locality** | Recently used pages are statistically likely to be used again soon |
-| **Spatial Locality** | Pages near recently accessed addresses are likely to be accessed soon |
-| **Thrashing** | System spends more time paging than executing — caused by insufficient frames |
-| **Working Set** | Set of pages actively used by a process in a time window |
-| **Dirty Page** | A page modified in RAM that must be written to disk before eviction |
+| **Virtual Memory** | OS abstraction that lets processes use more memory than physically exists in RAM |
+| **Paging** | Divides both logical and physical memory into equal fixed-size chunks (pages / frames) |
+| **Page** | Fixed-size block of a process's logical address space |
+| **Frame** | Fixed-size block of physical RAM — same size as a page |
+| **Page Fault** | Interrupt raised when the CPU requests a page not currently resident in RAM |
+| **Page Table** | OS data structure mapping each page number to its physical frame number |
+| **MMU** | Memory Management Unit — hardware that performs logical-to-physical address translation |
+| **Logical Address** | Address generated by the CPU: composed of Page Number and Offset |
+| **Physical Address** | Actual memory address in RAM: Frame Number combined with Offset |
+| **Demand Paging** | Pages are only loaded into RAM when first accessed, not at process startup |
+| **Page Replacement** | Process of choosing a victim page to evict when RAM is full |
+| **FIFO** | Evicts the page that has been resident in RAM the longest |
+| **LRU** | Evicts the page that was accessed least recently |
+| **Belady's Anomaly** | FIFO defect: more frames can paradoxically cause more page faults |
+| **Temporal Locality** | A page used recently is statistically very likely to be used again soon |
+| **Spatial Locality** | Pages near a recently accessed address are also likely to be accessed soon |
+| **Working Set** | The set of pages actively being used by a process within a time window |
+| **Thrashing** | Pathological state where the system spends more time paging than executing code |
+| **Dirty Page** | A modified page that must be written back to disk before its frame is reused |
+| **OPT / Optimal** | Theoretical algorithm that evicts the page used furthest in the future — not implementable |
 
 </details>
 
@@ -546,8 +717,8 @@ Algorithm        : LRU
 
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=120&section=footer&text=Operating%20Systems%20PBL%20%E2%80%94%20Woxsen%20University&fontSize=16&fontColor=a0a0ff&fontAlignY=65&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:24243e,50:302b63,100:0f0c29&height=130&section=footer&text=Operating%20Systems%20PBL%20%E2%80%94%20Woxsen%20University&fontSize=15&fontColor=a0a0ff&fontAlignY=65&animation=fadeIn" width="100%" alt="footer"/>
 
-**Made with 🧠 + Python | FIFO · LRU · Address Translation**
+**Built with Python · FIFO · LRU · Address Translation · Tkinter · Matplotlib**
 
 </div>
